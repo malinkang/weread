@@ -130,7 +130,8 @@ def insert_book_to_notion(
         readingTime = format_time(read_info.get("readingTime", 0))
         readingProgress = (
             100 if (markedStatus == 4) else read_info.get("readingProgress", 0)
-        )
+        )/100
+        
         totalReadDay = read_info.get("totalReadDay", 0)
         properties["阅读状态"] = {"status": {"name": "已读" if markedStatus == 4 else "在读"}}
         properties["阅读时长"] = get_rich_text(readingTime)
@@ -364,37 +365,46 @@ if __name__ == "__main__":
     repository =  os.getenv("REPOSITORY")
     weread_api = WeReadApi()
     notion_helper = NotionHelper()
-    latest_sort = get_sort()
-    books = weread_api.get_notebooklist()
-    if books != None:
-        for index, book in enumerate(books):
-            sort = book.get("sort")
-            if sort <= latest_sort:
-                continue
-            book = book.get("book")
-            title = book.get("title")
-            cover = book.get("cover")
-            if book.get("author") == "公众号" and book.get("cover").endswith("/0"):
-                cover += ".jpg"
-            if cover.startswith("http") and not cover.endswith(".jpg"):
-                path = download_image(cover)
-                cover = (
-                    f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
-                )
-            bookId = book.get("bookId")
-            author = book.get("author")
-            categories = book.get("categories")
-            if categories != None:
-                categories = [x["title"] for x in categories]
-            print(f"正在同步《{title}》,一共{len(books)}本，当前是第{index+1}本。")
-            page_id = check(bookId)
-            isbn, rating = weread_api.get_bookinfo(bookId)
-            page_id = insert_book_to_notion(
-                page_id, title, bookId, cover, author, isbn, rating, categories, sort
-            )
-            chapter = weread_api.get_chapter_info(bookId)
-            bookmark_list = get_bookmark_list(page_id, bookId)
-            reviews = get_review_list(page_id,bookId)
-            bookmark_list.extend(reviews)
-            content = sort_notes(page_id, chapter, bookmark_list)
-            append_blocks(page_id, content)
+    # latest_sort = get_sort()
+    results = weread_api.get_bookshelf()
+    for key,value in results.items():
+        if(isinstance(value,list)):
+            print(f"{key} {len(value)}")
+    # for archive in results.get("archive"):
+    #     name = archive.get("name")
+    #     bookIds = archive.get("bookIds")
+    #     print(f"{name} {len(bookIds)}")
+    # weread_api.get_bookinfo("CB_38Z1fj1iYFim6jM6kfCow6Rt")
+    # books = weread_api.get_notebooklist()
+    # if books != None:
+    #     for index, book in enumerate(books):
+    #         sort = book.get("sort")
+    #         if sort <= latest_sort:
+    #             continue
+    #         book = book.get("book")
+    #         title = book.get("title")
+    #         cover = book.get("cover")
+    #         if book.get("author") == "公众号" and book.get("cover").endswith("/0"):
+    #             cover += ".jpg"
+    #         if cover.startswith("http") and not cover.endswith(".jpg"):
+    #             path = download_image(cover)
+    #             cover = (
+    #                 f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
+    #             )
+    #         bookId = book.get("bookId")
+    #         author = book.get("author")
+    #         categories = book.get("categories")
+    #         if categories != None:
+    #             categories = [x["title"] for x in categories]
+    #         print(f"正在同步《{title}》,一共{len(books)}本，当前是第{index+1}本。")
+    #         page_id = check(bookId)
+    #         isbn, rating = weread_api.get_bookinfo(bookId)
+    #         page_id = insert_book_to_notion(
+    #             page_id, title, bookId, cover, author, isbn, rating, categories, sort
+    #         )
+    #         chapter = weread_api.get_chapter_info(bookId)
+    #         bookmark_list = get_bookmark_list(page_id, bookId)
+    #         reviews = get_review_list(page_id,bookId)
+    #         bookmark_list.extend(reviews)
+    #         content = sort_notes(page_id, chapter, bookmark_list)
+    #         append_blocks(page_id, content)

@@ -1,5 +1,6 @@
 import hashlib
 from http.cookies import SimpleCookie
+import json
 import os
 import re
 
@@ -34,6 +35,16 @@ class WeReadApi:
                 cookies_dict, cookiejar=None, overwrite=True
             )
         return cookiejar
+    
+    def get_bookshelf(self):
+        self.session.get(WEREAD_URL)
+        r = self.session.get("https://i.weread.qq.com/shelf/sync?synckey=0&teenmode=0&album=1&onlyBookid=0")
+        with open("shelf.json","w") as f:
+            f.write(json.dumps(r.json()))
+        if r.ok:
+            return r.json()
+        else:
+            raise Exception(f"Could not get bookshelf {r.text}")
 
     @retry(stop_max_attempt_number=3, wait_fixed=5000)
     def get_notebooklist(self):
@@ -54,14 +65,12 @@ class WeReadApi:
         self.session.get(WEREAD_URL)
         params = dict(bookId=bookId)
         r = self.session.get(WEREAD_BOOK_INFO, params=params)
-        isbn = ""
+        with open("bookinfo.json","w") as f:
+            f.write(json.dumps(r.json()))
         if r.ok:
-            data = r.json()
-            isbn = data["isbn"]
-            newRating = data["newRating"] / 1000
-            return (isbn, newRating)
+            return r.json()
         else:
-            return ("", 0)
+            return None
 
     @retry(stop_max_attempt_number=3, wait_fixed=5000)
     def get_bookmark_list(self, bookId):
@@ -81,6 +90,8 @@ class WeReadApi:
             bookId=bookId, readingDetail=1, readingBookIndex=1, finishedDate=1
         )
         r = self.session.get(WEREAD_READ_INFO_URL, params=params)
+        with open("readinfo.json","w") as f:
+            f.write(json.dumps(r.json()))
         if r.ok:
             return r.json()
         else:
