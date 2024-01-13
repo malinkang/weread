@@ -141,7 +141,6 @@ if __name__ == "__main__":
                 properties,
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
-        print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')}")
         cover = book.get("cover")
         if book.get("author") == "公众号" and book.get("cover").endswith("/0"):
             cover += ".jpg"
@@ -149,6 +148,7 @@ if __name__ == "__main__":
             path = download_image(cover)
             cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
         book["cover"] = cover
+        print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')} cover = {cover}")
         parent = {"database_id": notion_helper.book_database_id, "type": "database_id"}
         if book.get("bookId") in books_dict:
             sum += 1
