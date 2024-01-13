@@ -3,6 +3,7 @@ import json
 import os
 
 import pendulum
+import requests
 from notion_helper import NotionHelper
 
 from weread_api import WeReadApi
@@ -35,8 +36,35 @@ def get_all_book():
     results = notion_helper.query_all(notion_helper.book_database_id)
     books_dict = {}
     for result in results:
-        books_dict[utils.get_property_value(result.get("properties").get("BookId"))]= result.get("id")
+        books_dict[
+            utils.get_property_value(result.get("properties").get("BookId"))
+        ] = result.get("id")
         return books_dict
+
+
+def download_image(url, save_dir="cover"):
+    # 确保目录存在，如果不存在则创建
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
+    # 获取文件名，使用 URL 最后一个 '/' 之后的字符串
+    file_name = url.split("/")[-1] + ".jpg"
+    save_path = os.path.join(save_dir, file_name)
+
+    # 检查文件是否已经存在，如果存在则不进行下载
+    if os.path.exists(save_path):
+        print(f"File {file_name} already exists. Skipping download.")
+        return save_path
+
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        with open(save_path, "wb") as file:
+            for chunk in response.iter_content(chunk_size=128):
+                file.write(chunk)
+        print(f"Image downloaded successfully to {save_path}")
+    else:
+        print(f"Failed to download image. Status code: {response.status_code}")
+    return save_path
 
 
 if __name__ == "__main__":
@@ -52,7 +80,7 @@ if __name__ == "__main__":
     bookshelf_books = weread_api.get_bookshelf()
     # 笔记中的书
     notebooks = weread_api.get_notebooklist()
-    notebooks = [d['bookId'] for d in notebooks if 'bookId' in d]
+    notebooks = [d["bookId"] for d in notebooks if "bookId" in d]
     # 删除sort
     archive_dict = {}
     for archive in bookshelf_books.get("archive"):
@@ -60,13 +88,13 @@ if __name__ == "__main__":
         bookIds = archive.get("bookIds")
         archive_dict.update({bookId: name for bookId in bookIds})
     books = bookshelf_books.get("books")
-    books = [d['bookId'] for d in books if 'bookId' in d]
+    books = [d["bookId"] for d in books if "bookId" in d]
     books = list(set(notebooks + books))
     sum = 0
-    for index,bookId in enumerate(books):
+    for index, bookId in enumerate(books):
         book = {}
         book["bookId"] = bookId
-        if(bookId in archive_dict):
+        if bookId in archive_dict:
             book["archive"] = archive_dict.get(bookId)
         bookInfo = weread_api.get_bookinfo(bookId)
         if bookInfo != None:
@@ -79,7 +107,7 @@ if __name__ == "__main__":
         # 时间优先取完成阅读的时间
         book["readingProgress"] = (
             100 if (book.get("markedStatus") == 4) else book.get("readingProgress", 0)
-        )/100
+        ) / 100
         status = {1: "想读", 4: "已读"}
         book["status"] = status.get(book.get("markedStatus"), "在读")
         date = None
@@ -114,9 +142,16 @@ if __name__ == "__main__":
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
         print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')}")
+        cover = book.get("cover")
+        if book.get("author") == "公众号" and book.get("cover").endswith("/0"):
+            cover += ".jpg"
+        if cover.startswith("http") and not cover.endswith(".jpg"):
+            path = download_image(cover)
+            cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
+        book["cover"] = cover
         parent = {"database_id": notion_helper.book_database_id, "type": "database_id"}
         if book.get("bookId") in books_dict:
-            sum +=1
+            sum += 1
             notion_helper.update_page(
                 page_id=books_dict.get(book.get("bookId")),
                 properties=properties,
@@ -128,4 +163,4 @@ if __name__ == "__main__":
                 properties=properties,
                 icon=utils.get_icon(book.get("cover")),
             )
-        print(f"已存在 {sum}本")
+    print(f"已存在 {sum}本")
