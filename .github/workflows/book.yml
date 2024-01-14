@@ -41,11 +41,11 @@ jobs:
       - name: weread book sync
         run: |
           python -u scripts/book.py
-          - name: Checkout backup branch
-          uses: actions/checkout@v3
-          with:
-            ref: 'backup'
-            path: 'backup'
+      - name: Checkout backup branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'backup'
+          path: 'backup'
       - name: Copy images to backup branch directory
         run: |
           rm -rf ./backup/docs/assets/cover/
