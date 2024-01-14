@@ -52,10 +52,10 @@ jobs:
           RANDOM_FILENAME=$(uuidgen).svg
           mv ./OUT_FOLDER/weread.svg ./OUT_FOLDER/$RANDOM_FILENAME
           echo "Renamed file to $RANDOM_FILENAME"
-          - name: Setup Git Config
-          run: |
-            git config user.name "GitHub Actions"
-            git config user.email "actions@github.com"
+      - name: Setup Git Config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
       - name: Check if Backup Branch Exists
         id: check_backup
         run: |
