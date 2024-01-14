@@ -57,13 +57,15 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
       - name: Check if Backup Branch Exists
+        id: check_backup
         run: |
-          if git ls-remote --heads origin backup | grep backup || true; then
+          if git ls-remote --heads origin refs/heads/backup | grep -q refs/heads/backup; then
             echo "Backup branch exists."
             echo "BACKUP_EXISTS=true" >> $GITHUB_ENV
           else
             echo "Backup branch does not exist."
             echo "BACKUP_EXISTS=false" >> $GITHUB_ENV
+          fi
       - name: Create Local Backup Branch
         if: env.BACKUP_EXISTS == 'false'
         run: git checkout -b backup
