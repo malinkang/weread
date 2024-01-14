@@ -39,8 +39,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Remove folder
-        run: rm -rf ./OUT_FOLDER
       - name: Set default year if not provided
         run: echo "YEAR=$(date +"%Y")" >> $GITHUB_ENV
         if: env.YEAR == ''
@@ -59,6 +57,7 @@ jobs:
           path: 'backup'
       - name: Copy images to backup branch directory
         run: |
+          rm -rf ./backup/docs/assets/heatmap/
           mkdir -p backup/docs/assets/heatmap/
           cp -r OUT_FOLDER/* backup/docs/assets/heatmap/
       - name: Push changes to backup branch
