@@ -64,7 +64,7 @@ if __name__ == "__main__":
         block_id = notion_helper.image_dict.get("id")
         branch = os.getenv("REF").split("/")[-1]
         repository =  os.getenv("REPOSITORY")
-        new_image_url = f"https://raw.githubusercontent.com/{repository}/backup_repo/docs/assets/heatmap/{image_file}"
+        new_image_url = f"https://raw.githubusercontent.com/{repository}/backup/docs/assets/heatmap/{image_file}"
         if(image_url and block_id):
             notion_helper.update_image_block_link(block_id,new_image_url)
     api_data = weread_api.get_api_data()
