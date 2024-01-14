@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import json
 import os
 
@@ -43,13 +44,29 @@ def get_all_book():
         return books_dict
 
 
+def url_to_md5(url):
+    # 创建一个md5哈希对象
+    md5_hash = hashlib.md5()
+
+    # 对URL进行编码，准备进行哈希处理
+    # 默认使用utf-8编码
+    encoded_url = url.encode('utf-8')
+
+    # 更新哈希对象的状态
+    md5_hash.update(encoded_url)
+
+    # 获取十六进制的哈希表示
+    hex_digest = md5_hash.hexdigest()
+
+    return hex_digest
+
 def download_image(url, save_dir="cover"):
     # 确保目录存在，如果不存在则创建
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
     # 获取文件名，使用 URL 最后一个 '/' 之后的字符串
-    file_name = url.split("/")[-1] + ".jpg"
+    file_name = url_to_md5(url) + ".jpg"
     save_path = os.path.join(save_dir, file_name)
 
     # 检查文件是否已经存在，如果存在则不进行下载
@@ -143,10 +160,10 @@ if __name__ == "__main__":
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
         cover = book.get("cover")
-        if cover!=None and cover.startswith("http") and not cover.endswith(".jpg"):
+        if cover is not None and cover.startswith("http") and not cover.endswith(".jpg"):
             path = download_image(cover)
             cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
-        else:
+        elif cover is None or not cover.startswith("http"):
             cover = BOOK_ICON_URL
         book["cover"] = cover
         print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')} cover = {cover}")

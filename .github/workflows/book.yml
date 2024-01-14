@@ -30,7 +30,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -42,10 +41,34 @@ jobs:
       - name: weread book sync
         run: |
           python -u scripts/book.py
-      - name: push
+      - name: Setup Git Config
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m 'add new cover' || echo "nothing to commit"
-          git push || echo "nothing to push"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      - name: Check if Backup Branch Exists
+        id: check_backup
+        run: |
+          if git ls-remote --heads origin backup | grep backup; then
+            echo "Backup branch exists."
+            echo "BACKUP_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "Backup branch does not exist."
+            echo "BACKUP_EXISTS=false" >> $GITHUB_ENV
+      - name: Create Local Backup Branch
+        if: env.BACKUP_EXISTS == 'false'
+        run: git checkout -b backup
+      - name: Push Local Backup Branch
+        if: env.BACKUP_EXISTS == 'false'
+        run: git push origin backup
+      - name: Checkout Backup Branch
+        if: env.BACKUP_EXISTS == 'true'
+        run: git checkout -t origin/backup
+      - name: Copy Images to Backup Branch Directory
+        run: |
+          mkdir -p docs/assets/cover
+          cp -r cover/* docs/assets/cover/
+      - name: Commit and Push Images to Backup Branch
+        run: |
+          git add docs/assets/cover
+          git commit -m "Update images"
+          git push origin backup
