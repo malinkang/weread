@@ -60,12 +60,14 @@ jobs:
       - name: Copy images to backup branch directory
         run: |
           mkdir -p backup_repo/docs/assets/heatmap/
-          cp -r main_repo/OUTPUT/* backup_repo/docs/assets/heatmap/
+          cp -r OUT_FOLDER/* backup_repo/docs/assets/heatmap/
       - name: Push changes to backup branch
         run: |
-          cd backup_repo
-          git config user.name "your-github-username"
-          git config user.email "your-github-email"
-          git add docs/assets/heatmap/
-          git commit -m "Update images" || echo "No changes to commit"
-          git push -f origin backup
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m '生成热力图' || echo "nothing to commit"
+          git push origin backup|| echo "nothing to push"
+      - name: read time sync
+        run: |
+          python -u scripts/read_time.py

@@ -42,7 +42,7 @@ def insert_to_notion(page_id,timestamp,duration):
 
 def get_file():
     # 设置文件夹路径
-    folder_path = './OUT_FOLDER'
+    folder_path = './backup_repo/docs/assets/heatmap/'
 
     # 检查文件夹是否存在
     if os.path.exists(folder_path) and os.path.isdir(folder_path):
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         block_id = notion_helper.image_dict.get("id")
         branch = os.getenv("REF").split("/")[-1]
         repository =  os.getenv("REPOSITORY")
-        new_image_url = f"https://raw.githubusercontent.com/{repository}/{branch}/OUT_FOLDER/{image_file}"
+        new_image_url = f"https://raw.githubusercontent.com/{repository}/backup_repo/docs/assets/heatmap/{image_file}"
         if(image_url and block_id):
             notion_helper.update_image_block_link(block_id,new_image_url)
     api_data = weread_api.get_api_data()
