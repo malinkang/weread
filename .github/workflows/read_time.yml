@@ -52,35 +52,20 @@ jobs:
           RANDOM_FILENAME=$(uuidgen).svg
           mv ./OUT_FOLDER/weread.svg ./OUT_FOLDER/$RANDOM_FILENAME
           echo "Renamed file to $RANDOM_FILENAME"
-      - name: Setup Git Config
+      - name: Checkout backup branch
+        uses: actions/checkout@v2
+        with:
+          ref: 'backup'
+          path: 'backup_repo'
+      - name: Copy images to backup branch directory
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-      - name: Check if Backup Branch Exists
-        id: check_backup
+          mkdir -p backup_repo/docs/assets/heatmap/
+          cp -r main_repo/OUTPUT/* backup_repo/docs/assets/heatmap/
+      - name: Push changes to backup branch
         run: |
-          if git ls-remote --heads origin refs/heads/backup | grep -q refs/heads/backup; then
-            echo "Backup branch exists."
-            echo "BACKUP_EXISTS=true" >> $GITHUB_ENV
-          else
-            echo "Backup branch does not exist."
-            echo "BACKUP_EXISTS=false" >> $GITHUB_ENV
-          fi
-      - name: Create Local Backup Branch
-        if: env.BACKUP_EXISTS == 'false'
-        run: git checkout -b backup
-      - name: Push Local Backup Branch
-        if: env.BACKUP_EXISTS == 'false'
-        run: git push origin backup
-      - name: Checkout Backup Branch
-        if: env.BACKUP_EXISTS == 'true'
-        run: git checkout -t origin/backup
-      - name: Copy Images to Backup Branch Directory
-        run: |
-          mkdir -p docs/assets/cover
-          cp -r OUT_FOLDER/* docs/assets/cover/
-      - name: Commit and Push Images to Backup Branch
-        run: |
-          git add docs/assets/cover
-          git commit -m "生成热力图"
-          git push origin backup
+          cd backup_repo
+          git config user.name "your-github-username"
+          git config user.email "your-github-email"
+          git add docs/assets/heatmap/
+          git commit -m "Update images" || echo "No changes to commit"
+          git push -f origin backup
