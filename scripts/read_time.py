@@ -42,7 +42,7 @@ def insert_to_notion(page_id,timestamp,duration):
 
 def get_file():
     # 设置文件夹路径
-    folder_path = './backup_repo/docs/assets/heatmap/'
+    folder_path = './backup/docs/assets/heatmap/'
 
     # 检查文件夹是否存在
     if os.path.exists(folder_path) and os.path.isdir(folder_path):
