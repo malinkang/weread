@@ -17,6 +17,7 @@ TAG_ICON_URL = "https://www.notion.so/icons/tag_gray.svg"
 USER_ICON_URL = "https://www.notion.so/icons/user-circle-filled_gray.svg"
 TARGET_ICON_URL = "https://www.notion.so/icons/target_red.svg"
 BOOKMARK_ICON_URL = "https://www.notion.so/icons/bookmark_gray.svg"
+BOOK_ICON_URL = "https://www.notion.so/icons/book_gray.svg"
 
 d = {
     "封面": "cover",
@@ -142,11 +143,13 @@ if __name__ == "__main__":
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
         cover = book.get("cover")
-        if book.get("author") == "公众号" and book.get("cover").endswith("/0"):
+        if book.get("author") == "公众号" and cover.endswith("/0"):
             cover += ".jpg"
-        if cover.startswith("http") and not cover.endswith(".jpg"):
+        elif cover.startswith("http") and not cover.endswith(".jpg"):
             path = download_image(cover)
             cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
+        elif not cover.startswith("http"):
+            cover = BOOK_ICON_URL
         book["cover"] = cover
         print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')} cover = {cover}")
         parent = {"database_id": notion_helper.book_database_id, "type": "database_id"}
