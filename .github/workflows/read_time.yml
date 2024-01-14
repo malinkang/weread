@@ -59,7 +59,7 @@ jobs:
           path: 'backup'
       - name: Copy images to backup branch directory
         run: |
-          mkdir -p backup_repo/docs/assets/heatmap/
+          mkdir -p backup/docs/assets/heatmap/
           cp -r OUT_FOLDER/* backup/docs/assets/heatmap/
       - name: Push changes to backup branch
         run: |
