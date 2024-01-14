@@ -41,32 +41,21 @@ jobs:
       - name: weread book sync
         run: |
           python -u scripts/book.py
-      - name: Check if Backup Branch Exists
-        id: check_backup
+          - name: Checkout backup branch
+          uses: actions/checkout@v3
+          with:
+            ref: 'backup'
+            path: 'backup'
+      - name: Copy images to backup branch directory
         run: |
-          if git ls-remote --heads origin backup | grep backup; then
-            echo "Backup branch exists."
-            echo "BACKUP_EXISTS=true" >> $GITHUB_ENV
-          else
-            echo "Backup branch does not exist."
-            echo "BACKUP_EXISTS=false" >> $GITHUB_ENV
-      - name: Create Local Backup Branch
-        if: env.BACKUP_EXISTS == 'false'
-        run: git checkout -b backup
-      - name: Push Local Backup Branch
-        if: env.BACKUP_EXISTS == 'false'
-        run: git push origin backup
-      - name: Checkout Backup Branch
-        if: env.BACKUP_EXISTS == 'true'
-        run: git checkout -t origin/backup
-      - name: Copy Images to Backup Branch Directory
+          rm -rf ./backup/docs/assets/cover/
+          mkdir -p backup/docs/assets/cover/
+          cp -r cover/* backup/docs/assets/cover/
+      - name: Push changes to backup branch
         run: |
-          mkdir -p docs/assets/cover
-          cp -r cover/* docs/assets/cover/
-      - name: push
-        run: |
+          cd backup
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m 'add new cover' || echo "nothing to commit"
+          git commit -m '生成热力图' || echo "nothing to commit"
           git push origin backup|| echo "nothing to push"
