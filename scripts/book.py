@@ -143,12 +143,10 @@ if __name__ == "__main__":
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
         cover = book.get("cover")
-        if book.get("author") == "公众号" and cover.endswith("/0"):
-            cover += ".jpg"
-        elif cover.startswith("http") and not cover.endswith(".jpg"):
+        if cover!=None and cover.startswith("http") and not cover.endswith(".jpg"):
             path = download_image(cover)
             cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
-        elif not cover.startswith("http"):
+        else:
             cover = BOOK_ICON_URL
         book["cover"] = cover
         print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')} cover = {cover}")
