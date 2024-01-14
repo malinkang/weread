@@ -41,7 +41,7 @@ def get_all_book():
         books_dict[
             utils.get_property_value(result.get("properties").get("BookId"))
         ] = result.get("id")
-        return books_dict
+    return books_dict
 
 
 def url_to_md5(url):
@@ -93,6 +93,8 @@ if __name__ == "__main__":
     weread_api = WeReadApi()
     notion_helper = NotionHelper()
     books_dict = get_all_book()
+    with open("books2.json","w") as f:
+        f.write(json.dumps(books_dict))
     # 书架的书
     bookshelf_books = weread_api.get_bookshelf()
     # 笔记中的书
@@ -105,7 +107,7 @@ if __name__ == "__main__":
         archive_dict.update({bookId: name for bookId in bookIds})
     books = bookshelf_books.get("books")
     books = [d["bookId"] for d in books if "bookId" in d]
-    books = list(set(notebooks + books))
+    books = list(set(notebooks))
     sum = 0
     for index, bookId in enumerate(books):
         book = {}
@@ -169,6 +171,7 @@ if __name__ == "__main__":
         print(f"一共{len(books)}本，当前是第{index}本，正在同步{book.get('title')} cover = {cover}")
         parent = {"database_id": notion_helper.book_database_id, "type": "database_id"}
         if book.get("bookId") in books_dict:
+            print(f"{book.get('title')} 已存在")
             sum += 1
             notion_helper.update_page(
                 page_id=books_dict.get(book.get("bookId")),
