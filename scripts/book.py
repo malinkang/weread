@@ -65,7 +65,6 @@ def download_image(url, save_dir="cover"):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    # 获取文件名，使用 URL 最后一个 '/' 之后的字符串
     file_name = url_to_md5(url) + ".jpg"
     save_path = os.path.join(save_dir, file_name)
 
@@ -99,7 +98,6 @@ if __name__ == "__main__":
     # 笔记中的书
     notebooks = weread_api.get_notebooklist()
     notebooks = [d["bookId"] for d in notebooks if "bookId" in d]
-    # 删除sort
     archive_dict = {}
     for archive in bookshelf_books.get("archive"):
         name = archive.get("name")
@@ -160,7 +158,9 @@ if __name__ == "__main__":
                 pendulum.from_timestamp(book.get("date"), tz="Asia/Shanghai"),
             )
         cover = book.get("cover")
-        path = download_image(cover)
+        path = None
+        if cover.startswith("http://"):
+            path = download_image(cover)
         if cover is not None and cover.startswith("http") and not cover.endswith(".jpg"):
             cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
         elif cover is None or not cover.startswith("http"):
