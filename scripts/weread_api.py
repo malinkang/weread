@@ -39,8 +39,6 @@ class WeReadApi:
     def get_bookshelf(self):
         self.session.get(WEREAD_URL)
         r = self.session.get("https://i.weread.qq.com/shelf/sync?synckey=0&teenmode=0&album=1&onlyBookid=0")
-        with open("shelf.json","w") as f:
-            f.write(json.dumps(r.json()))
         if r.ok:
             return r.json()
         else:
@@ -65,8 +63,6 @@ class WeReadApi:
         self.session.get(WEREAD_URL)
         params = dict(bookId=bookId)
         r = self.session.get(WEREAD_BOOK_INFO, params=params)
-        with open("bookinfo.json","w") as f:
-            f.write(json.dumps(r.json()))
         if r.ok:
             return r.json()
         else:
@@ -90,8 +86,6 @@ class WeReadApi:
             bookId=bookId, readingDetail=1, readingBookIndex=1, finishedDate=1
         )
         r = self.session.get(WEREAD_READ_INFO_URL, params=params)
-        with open("readinfo.json","w") as f:
-            f.write(json.dumps(r.json()))
         if r.ok:
             return r.json()
         else:

@@ -271,7 +271,7 @@ def get_property_value(property):
             return content[0].get("plain_text")
         else:
             return None
-    elif type == "status":
+    elif type == "status" or type == "select":
         return content.get("name")
     elif type == "files":
         # 不考虑多文件情况
