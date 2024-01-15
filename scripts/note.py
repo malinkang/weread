@@ -299,4 +299,4 @@ if __name__ == "__main__":
             properties = {
                 "Sort":get_number(sort)
             }
-            notion_helper.client.pages.update(page_id=pageId,properties=properties)
+            notion_helper.update_book_page(page_id=pageId,properties=properties)
