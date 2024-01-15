@@ -127,13 +127,12 @@ def insert_book_to_notion(books,index,bookId):
         )
     cover = book.get("cover")
     path = None
-    if cover.startswith("http"):
-        path = download_image(cover)
     if (
         cover is not None
         and cover.startswith("http")
         and not cover.endswith(".jpg")
     ):
+        path = download_image(cover)
         cover = f"https://raw.githubusercontent.com/{repository}/{branch}/{path}"
     elif cover is None or not cover.startswith("http"):
         cover = BOOK_ICON_URL
