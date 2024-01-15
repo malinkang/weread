@@ -1,4 +1,4 @@
-name: weread book sync
+name: weread read sync
 
 on:
   workflow_dispatch:
@@ -41,7 +41,7 @@ jobs:
       - name: weread book sync
         run: |
           python -u scripts/book.py
-      - name: weread book sync
+      - name: weread note sync
         run: |
           python -u scripts/note.py
       - name: Checkout backup branch
