@@ -30,6 +30,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Checkout backup branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'backup'
+          path: 'backup'
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -44,16 +49,6 @@ jobs:
       - name: weread note sync
         run: |
           python -u scripts/note.py
-      - name: Checkout backup branch
-        uses: actions/checkout@v3
-        with:
-          ref: 'backup'
-          path: 'backup'
-      - name: Copy images to backup branch directory
-        run: |
-          rm -rf ./backup/docs/assets/cover/
-          mkdir -p backup/docs/assets/cover/
-          cp -r cover/* backup/docs/assets/cover/
       - name: Push changes to backup branch
         run: |
           cd backup
