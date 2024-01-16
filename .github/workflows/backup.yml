@@ -1,0 +1,23 @@
+name: backup
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 20.x
+      - run: node scripts/backup.js
+      - name: push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m 'new backup' || echo "nothing to commit"
+          git push || echo "nothing to push"
