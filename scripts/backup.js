@@ -78,17 +78,38 @@ async function searchDatabase(blockId) {
   }
 }
 
+async function getAllPagesFromDatabase(databaseId, startCursor = null) {
+  let hasMore = true;
+  let pages = [];
+  let nextCursor = startCursor;
+
+  while (hasMore) {
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      start_cursor: nextCursor,
+    });
+
+    pages = pages.concat(response.results);
+
+    if (response.has_more) {
+      nextCursor = response.next_cursor;
+    } else {
+      hasMore = false;
+    }
+  }
+
+  return pages;
+}
+
 
 (async () => {
   try {
     const pageId = extractPageId(process.env.NOTION_PAGE)
     const databaseId = await searchDatabase(pageId)
-    const response = await notion.databases.query({
-      database_id: databaseId,
-    });
+    const results = await getAllPagesFromDatabase(databaseId);
 
     // 遍历所有页面
-    for (const page of response.results) {
+    for (const page of results) {
       // 获取页面标题（假设标题是一个文本属性）
       const titleProperty = page.properties['书名']; // 'Name' 是标题属性的名称，可能需要根据实际情况调整
       const pageTitle = titleProperty.title[0].plain_text;
@@ -109,7 +130,7 @@ async function searchDatabase(blockId) {
       // 使用 pageToMarkdown 转换页面
       const mdblocks = await n2m.pageToMarkdown(page.id);
       const mdString = n2m.toMarkdownString(mdblocks).parent;
-
+      console.log(`mdString = ${mdString}`)
       // 创建 Front Matter
       let frontMatter = `---\ntitle: ${pageTitle}\n`;
       if (tags.length > 0) {
