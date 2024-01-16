@@ -1,4 +1,4 @@
-name: backup
+name: backup book
 on:
   workflow_dispatch:
   schedule:
