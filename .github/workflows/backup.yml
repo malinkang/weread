@@ -15,12 +15,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
-      - name: backup book
-        run: node scripts/backup.js
-      - name: push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m 'new backup' || echo "nothing to commit"
-          git push || echo "nothing to push"
+      # - name: backup book
+      #   run: node scripts/backup.js
+      # - name: push
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add .
+      #     git commit -m 'new backup' || echo "nothing to commit"
+      #     git push || echo "nothing to push"
