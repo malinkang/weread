@@ -1,41 +1,19 @@
 import argparse
-import json
-import logging
 import os
-import re
-import time
-from notion_client import Client
 import requests
 
-from datetime import datetime, timedelta
-import hashlib
 from notion_helper import NotionHelper
 from weread_api import WeReadApi
 
 from utils import (
-    format_date,
-    format_time,
     get_callout,
-    get_date,
-    get_file,
     get_heading,
-    get_icon,
     get_number,
     get_number_from_result,
     get_quote,
-    get_relation,
-    get_rich_text,
     get_rich_text_from_result,
     get_table_of_contents,
-    get_title,
-    get_url,
 )
-
-
-TAG_ICON_URL = "https://www.notion.so/icons/tag_gray.svg"
-USER_ICON_URL = "https://www.notion.so/icons/user-circle-filled_gray.svg"
-TARGET_ICON_URL = "https://www.notion.so/icons/target_red.svg"
-BOOKMARK_ICON_URL = "https://www.notion.so/icons/bookmark_gray.svg"
 
 
 def get_bookmark_list(page_id, bookId):
@@ -282,8 +260,6 @@ if __name__ == "__main__":
             bookId = book.get("bookId")
             title = book.get("book").get("title")
             sort = book.get("sort")
-            print(f"{sort}")
-            print(f"title = {title} sort ={sort}")
             if bookId not in notion_books:
                 continue
             if sort == notion_books.get(bookId).get("Sort"):
