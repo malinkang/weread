@@ -107,7 +107,7 @@ async function getAllPagesFromDatabase(databaseId, startCursor = null) {
     const pageId = extractPageId(process.env.NOTION_PAGE)
     const databaseId = await searchDatabase(pageId)
     const results = await getAllPagesFromDatabase(databaseId);
-
+    console.log("results = " + results.length)
     // 遍历所有页面
     for (const page of results) {
       // 获取页面标题（假设标题是一个文本属性）
