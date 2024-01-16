@@ -9,11 +9,14 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up node
+        uses: actions/setup-node@v3
         with:
-            node-version: 20.x
-      - run: node scripts/backup.js
+          node-version: 20.x
+      - name: backup book
+        run: node scripts/backup.js
       - name: push
         run: |
           git config --local user.email "action@github.com"
