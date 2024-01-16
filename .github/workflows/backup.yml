@@ -8,6 +8,9 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_PAGE: ${{ secrets.NOTION_PAGE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
