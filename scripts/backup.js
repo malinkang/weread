@@ -159,7 +159,7 @@ async function getAllPagesFromDatabase(databaseId, startCursor = null) {
       const filename = pageTitle.replace(/[<>:"\/\\|?*]+/g, '-') + '.md';
 
       // 将 Front Matter 和 Markdown 内容写入以页面标题命名的文件
-      fs.writeFileSync(`./docs/books/${filename}`, frontMatter + mdString);
+      fs.writeFileSync(`./backup/docs/books/${filename}`, frontMatter + mdString);
 
       console.log(`Markdown content for page "${pageTitle}" has been written to ${filename}`);
     }
