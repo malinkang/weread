@@ -136,6 +136,9 @@ async function getAllPagesFromDatabase(databaseId, startCursor = null) {
       const mdblocks = await n2m.pageToMarkdown(page.id);
       const mdString = n2m.toMarkdownString(mdblocks).parent;
       console.log(`mdString = ${mdString}`)
+      if(mdString === undefined) {
+        continue;
+      }
       // 创建 Front Matter
       let frontMatter = `---\ntitle: ${pageTitle}\n`;
       if (tags.length > 0) {

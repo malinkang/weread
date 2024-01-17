@@ -20,6 +20,9 @@ jobs:
         with:
           ref: 'backup'
           path: 'backup'
+      - name: Create book dir 
+        run: |
+          mkdir -p backup/docs/books
       - name: Set up node
         uses: actions/setup-node@v3
         with:
