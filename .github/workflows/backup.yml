@@ -1,0 +1,38 @@
+name: backup book
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_PAGE: ${{ secrets.NOTION_PAGE }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout backup branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'backup'
+          path: 'backup'
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: npm install @notionhq/client
+      - run: npm install notion-to-md
+      - name: backup book
+        run: node scripts/backup.js
+      - name: push
+        run: |
+          cd backup
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m '备份' || echo "nothing to commit"
+          git push origin backup|| echo "nothing to push"
