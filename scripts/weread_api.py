@@ -63,6 +63,8 @@ class WeReadApi:
         self.session.get(WEREAD_URL)
         params = dict(bookId=bookId)
         r = self.session.get(WEREAD_BOOK_INFO, params=params)
+        with open("bookinfo.json","w") as f:
+            f.write(json.dumps(r.json(),indent=4,ensure_ascii=False))
         if r.ok:
             return r.json()
         else:

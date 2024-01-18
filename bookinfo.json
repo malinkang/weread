@@ -1,0 +1,258 @@
+{
+    "bookId": "23934830",
+    "title": "巨人的工具",
+    "author": "蒂姆·费里斯",
+    "translator": "杨清波",
+    "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/830/23934830/s_23934830.jpg",
+    "version": 1629756640,
+    "format": "epub",
+    "type": 0,
+    "price": 76.8,
+    "originalPrice": 0,
+    "soldout": 0,
+    "bookStatus": 1,
+    "payType": 4097,
+    "intro": "美国知名作家蒂姆·费里斯制作的“蒂姆·费里斯秀”（TheTimFerrisShow）是美国成功的播客节目之一。在每一集节目中，蒂姆都会采访一位美国当前某个领域的精英人士，包括我们熟悉的阿诺德·施瓦辛格、赛斯·高汀、托尼·罗宾斯、彼得·蒂尔、约克·威林克、凯文·科斯特纳、马尔科姆·格拉德威尔、凯文·凯利、保罗·柯艾略、布琳·布朗等。但这本书并非简单的采访合集。作者蒂姆·费里斯讲自己看作一个实验者，收录进本书的智慧都是经过他个人亲自检验的。基于这些采访内容，蒂姆将所有人的成功秘诀进行了分类与提炼，并归纳出“健康”、“财富”与“智慧”这三大工具，而且这三个部分是相辅相成的。这三大工具可以被看作一个三脚架，而成功、幸福的生活正是建立在这三元素相互平衡的基础之上的。读者可以根据自己的需求点，找到适合自己的方法，进行灵活整合，制订专属于自己的人生规划。",
+    "centPrice": 7680,
+    "finished": 1,
+    "maxFreeChapter": 17,
+    "free": 0,
+    "mcardDiscount": 0,
+    "ispub": 1,
+    "extra_type": 5,
+    "cpid": 4525313,
+    "publishTime": "2018-12-01 00:00:00",
+    "category": "社会文化-社科",
+    "categories": [
+        {
+            "categoryId": 900000,
+            "subCategoryId": 900002,
+            "categoryType": 0,
+            "title": "社会文化-社科"
+        }
+    ],
+    "hasLecture": 0,
+    "lastChapterIdx": 143,
+    "paperBook": {
+        "skuId": "12465509"
+    },
+    "maxFreeInfo": {
+        "maxFreeChapterIdx": 17,
+        "maxFreeChapterUid": 159,
+        "maxFreeChapterRatio": 18
+    },
+    "copyrightChapterUids": [
+        144
+    ],
+    "hasKeyPoint": true,
+    "blockSaveImg": 0,
+    "language": "zh",
+    "hideUpdateTime": false,
+    "isEPUBComics": 0,
+    "webBookControl": 0,
+    "payingStatus": 1,
+    "chapterSize": 143,
+    "updateTime": 1701883501,
+    "onTime": 1548309864,
+    "lastChapterCreateTime": 1701882611,
+    "unitPrice": 0,
+    "marketType": 0,
+    "isbn": "9787508693248",
+    "publisher": "中信出版集团",
+    "totalWords": 402461,
+    "bookSize": 1539873,
+    "shouldHideTTS": 0,
+    "recommended": 0,
+    "lectureRecommended": 0,
+    "follow": 0,
+    "secret": 0,
+    "offline": 0,
+    "lectureOffline": 0,
+    "finishReading": 1,
+    "hideReview": 0,
+    "hideFriendMark": 0,
+    "blacked": 0,
+    "isAutoPay": 0,
+    "availables": 0,
+    "paid": 0,
+    "isChapterPaid": 0,
+    "showLectureButton": 1,
+    "wxtts": 1,
+    "star": 82,
+    "ratingCount": 1885,
+    "ratingDetail": {
+        "one": 69,
+        "two": 27,
+        "three": 200,
+        "four": 292,
+        "five": 1279,
+        "recent": 16
+    },
+    "newRating": 739,
+    "newRatingCount": 1632,
+    "newRatingDetail": {
+        "good": 1208,
+        "fair": 364,
+        "poor": 60,
+        "recent": 16,
+        "myRating": "",
+        "title": "值得一读"
+    },
+    "ranklist": {},
+    "copyrightInfo": {
+        "id": 4525313,
+        "name": "中信出版集团",
+        "userVid": 168010251,
+        "role": 2,
+        "avatar": "https://res.weread.qq.com/wravatar/WV0024-U1iMC6kMGhnrmZPNpypE~a6/0"
+    },
+    "authorSeg": [
+        {
+            "words": "蒂姆·费里斯",
+            "highlight": 1,
+            "authorId": "259087"
+        }
+    ],
+    "translatorSeg": [
+        {
+            "words": "杨清波",
+            "highlight": 1,
+            "authorId": "802699"
+        }
+    ],
+    "coverBoxInfo": {
+        "blurhash": "KHQ$c@n7.uXif7nRL;kTtz",
+        "colors": [
+            {
+                "key": "6/4",
+                "hex": "#b58a76"
+            },
+            {
+                "key": "4/4",
+                "hex": "#815644"
+            },
+            {
+                "key": "3/4",
+                "hex": "#663d2e"
+            },
+            {
+                "key": "3/6",
+                "hex": "#703820"
+            },
+            {
+                "key": "3/8",
+                "hex": "#79320e"
+            },
+            {
+                "key": "2/4",
+                "hex": "#4c261c"
+            },
+            {
+                "key": "2/6",
+                "hex": "#552011"
+            },
+            {
+                "key": "2/8",
+                "hex": "#5f1700"
+            },
+            {
+                "key": "1/4",
+                "hex": "#380e0a"
+            },
+            {
+                "key": "1/6",
+                "hex": "#3f0403"
+            },
+            {
+                "key": "1/8",
+                "hex": "#480000"
+            },
+            {
+                "key": "6/6",
+                "hex": "#c38566"
+            },
+            {
+                "key": "4/6",
+                "hex": "#8c5136"
+            },
+            {
+                "key": "9/2",
+                "hex": "#f4dfd4"
+            },
+            {
+                "key": "4/10",
+                "hex": "#9d460f"
+            },
+            {
+                "key": "5/10",
+                "hex": "#bc6029"
+            },
+            {
+                "key": "5/4",
+                "hex": "#9a705d"
+            },
+            {
+                "key": "8/4",
+                "hex": "#ecbfa8"
+            },
+            {
+                "key": "5/8",
+                "hex": "#b3653c"
+            },
+            {
+                "key": "6/8",
+                "hex": "#cf8056"
+            },
+            {
+                "key": "8/6",
+                "hex": "#fbb997"
+            },
+            {
+                "key": "7/8",
+                "hex": "#eb9a6e"
+            },
+            {
+                "key": "3/12",
+                "hex": "#872400"
+            },
+            {
+                "key": "9/12",
+                "hex": "#ffc478"
+            },
+            {
+                "key": "1/100",
+                "hex": "#cf8056"
+            },
+            {
+                "key": "2/100",
+                "hex": "#eb9a6e"
+            },
+            {
+                "key": "3/100",
+                "hex": "#ffffff"
+            },
+            {
+                "key": "4/100",
+                "hex": "#F3EDE5"
+            },
+            {
+                "key": "5/100",
+                "hex": "#F3EDE5"
+            },
+            {
+                "key": "6/100",
+                "hex": "#271300"
+            }
+        ],
+        "dominate_color": {
+            "hex": "#e76e04",
+            "hsv": [
+                28.01214376347435,
+                98.39003768666475,
+                90.443274924005
+            ]
+        },
+        "custom_cover": "https://weread-1258476243.file.myqcloud.com/bookalphacover/830/23934830/s_23934830.jpg",
+        "custom_rec_cover": "https://weread-1258476243.file.myqcloud.com/bookreccover/830/23934830/s_23934830.jpg"
+    }
+}

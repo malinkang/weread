@@ -28,6 +28,8 @@ book_properties_name_dict = {
     "lastReadingDate":"最后阅读时间",
     "intro":"简介",
     "archive":"书架分类",
+    "douban_url":"豆瓣链接",
+    "neodb_url":"NeoDB链接",
 }
 
 book_properties_type_dict = {
@@ -49,4 +51,6 @@ book_properties_type_dict = {
     "最后阅读时间":DATE,
     "简介":RICH_TEXT,
     "书架分类":SELECT,
+    "豆瓣链接":URL,
+    "NeoDB链接":URL,
 }

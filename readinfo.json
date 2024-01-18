@@ -1,0 +1,184 @@
+{
+    "finishedBookCount": 81,
+    "readingBookCount": 202,
+    "readingBookIndex": 170,
+    "readingBookDate": 1674723388,
+    "readingProgress": 91,
+    "readingReviewId": "R_16308016_44026191",
+    "canCancelReadstatus": 0,
+    "markedStatus": 2,
+    "readingTime": 28356,
+    "totalReadDay": 27,
+    "recordReadingTime": 0,
+    "deepestNightReadTime": 1682182209,
+    "continueReadDays": 6,
+    "continueBeginDate": 1682438400,
+    "continueEndDate": 1682870400,
+    "showSummary": 1,
+    "showDetail": 1,
+    "readDetail": {
+        "totalReadingTime": 28356,
+        "totalReadDay": 27,
+        "continueReadDays": 6,
+        "continueBeginDate": 1682438400,
+        "continueEndDate": 1682870400,
+        "deepestNightReadDate": 1682182209,
+        "beginReadingDate": 1674723388,
+        "lastReadingDate": 1705248000,
+        "longestReadingDate": 1681488000,
+        "avgReadingTime": 1050,
+        "longestReadingTime": 3707,
+        "data": [
+            {
+                "readDate": 1680624000,
+                "readTime": 1060
+            },
+            {
+                "readDate": 1681142400,
+                "readTime": 373
+            },
+            {
+                "readDate": 1681228800,
+                "readTime": 3350
+            },
+            {
+                "readDate": 1681315200,
+                "readTime": 2218
+            },
+            {
+                "readDate": 1681401600,
+                "readTime": 580
+            },
+            {
+                "readDate": 1681488000,
+                "readTime": 3707
+            },
+            {
+                "readDate": 1681747200,
+                "readTime": 437
+            },
+            {
+                "readDate": 1681833600,
+                "readTime": 751
+            },
+            {
+                "readDate": 1681920000,
+                "readTime": 3152
+            },
+            {
+                "readDate": 1682179200,
+                "readTime": 1570
+            },
+            {
+                "readDate": 1682438400,
+                "readTime": 419
+            },
+            {
+                "readDate": 1682524800,
+                "readTime": 92
+            },
+            {
+                "readDate": 1682611200,
+                "readTime": 230
+            },
+            {
+                "readDate": 1682697600,
+                "readTime": 148
+            },
+            {
+                "readDate": 1682784000,
+                "readTime": 96
+            },
+            {
+                "readDate": 1682870400,
+                "readTime": 122
+            },
+            {
+                "readDate": 1683043200,
+                "readTime": 265
+            },
+            {
+                "readDate": 1687276800,
+                "readTime": 412
+            },
+            {
+                "readDate": 1688832000,
+                "readTime": 225
+            },
+            {
+                "readDate": 1689436800,
+                "readTime": 478
+            },
+            {
+                "readDate": 1690646400,
+                "readTime": 831
+            },
+            {
+                "readDate": 1690732800,
+                "readTime": 2629
+            },
+            {
+                "readDate": 1690819200,
+                "readTime": 2204
+            },
+            {
+                "readDate": 1690905600,
+                "readTime": 132
+            },
+            {
+                "readDate": 1693843200,
+                "readTime": 1822
+            },
+            {
+                "readDate": 1704988800,
+                "readTime": 348
+            },
+            {
+                "readDate": 1705248000,
+                "readTime": 363
+            }
+        ]
+    },
+    "bookInfo": {
+        "bookId": "44026191",
+        "title": "纳瓦尔宝典",
+        "author": "埃里克·乔根森",
+        "translator": "赵灿",
+        "intro": "致富不是靠运气，幸福也不是从天而降的。积累财富和幸福生活是我们可以学习的技能。这本书收集整理了硅谷投资人纳瓦尔在过去十年里通过推特、播客和采访等方式分享的人生智慧，向读者分享了纳瓦尔关于财富积累和幸福人生的原则与方法。纳瓦尔不仅告诉读者怎样致富，他还告诉读者怎样看待人生，怎样获得幸福。他对财富、人生的思考将帮助你走自己独特的道路，过上更富有、更幸福的生活。",
+        "cover": "https://cdn.weread.qq.com/weread/cover/89/YueWen_44026191/s_YueWen_44026191.jpg",
+        "version": 1158382669,
+        "format": "epub",
+        "type": 0,
+        "soldout": 0,
+        "bookStatus": 1,
+        "payType": 4097,
+        "finished": 1,
+        "maxFreeChapter": 12,
+        "free": 0,
+        "mcardDiscount": 0,
+        "ispub": 1,
+        "extra_type": 5,
+        "cpid": 4525313,
+        "publishTime": "2022-05-01 00:00:00",
+        "lastChapterIdx": 23,
+        "paperBook": { 
+            "skuId": ""
+        },
+        "centPrice": 4760,
+        "readingCount": 6118,
+        "maxfreeInfo": {
+            "maxfreeChapterIdx": 12,
+            "maxfreeChapterUid": 73,
+            "maxfreeChapterRatio": 6
+        },
+        "copyrightChapterUids": [
+            63
+        ],
+        "hasKeyPoint": true,
+        "blockSaveImg": 0,
+        "language": "zh",
+        "hideUpdateTime": false,
+        "isEPUBComics": 0,
+        "webBookControl": 0
+    }
+}
