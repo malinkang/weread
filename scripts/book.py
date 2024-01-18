@@ -80,8 +80,10 @@ def insert_book_to_notion(books, index, bookId):
             book.update(neodb_book)
             if not book.get("cover").endswith(".jpg"):
                 book["cover"] = get_douban_cover(book.get("douban_url"))
+            else:
+                book["cover"] = book.get("cover").replace('/s_', '/t7_')
         else:
-             book["cover"] = book.get("cover").replace('/s_', '/t7_');
+             book["cover"] = book.get("cover").replace('/s_', '/t7_')
              book["author"] = book.get("author").split(" ")
     # 时间优先取完成阅读的时间
     book["readingProgress"] = (

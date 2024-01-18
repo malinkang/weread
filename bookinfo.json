@@ -1,66 +1,66 @@
 {
-    "bookId": "23934830",
-    "title": "巨人的工具",
-    "author": "蒂姆·费里斯",
-    "translator": "杨清波",
-    "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/830/23934830/s_23934830.jpg",
-    "version": 1629756640,
+    "bookId": "29101559",
+    "title": "Spring实战（第5版）",
+    "author": "克雷格·沃斯",
+    "translator": "张卫滨",
+    "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/559/29101559/s_29101559.jpg",
+    "version": 977196144,
     "format": "epub",
     "type": 0,
-    "price": 76.8,
+    "price": 63.36,
     "originalPrice": 0,
     "soldout": 0,
     "bookStatus": 1,
-    "payType": 4097,
-    "intro": "美国知名作家蒂姆·费里斯制作的“蒂姆·费里斯秀”（TheTimFerrisShow）是美国成功的播客节目之一。在每一集节目中，蒂姆都会采访一位美国当前某个领域的精英人士，包括我们熟悉的阿诺德·施瓦辛格、赛斯·高汀、托尼·罗宾斯、彼得·蒂尔、约克·威林克、凯文·科斯特纳、马尔科姆·格拉德威尔、凯文·凯利、保罗·柯艾略、布琳·布朗等。但这本书并非简单的采访合集。作者蒂姆·费里斯讲自己看作一个实验者，收录进本书的智慧都是经过他个人亲自检验的。基于这些采访内容，蒂姆将所有人的成功秘诀进行了分类与提炼，并归纳出“健康”、“财富”与“智慧”这三大工具，而且这三个部分是相辅相成的。这三大工具可以被看作一个三脚架，而成功、幸福的生活正是建立在这三元素相互平衡的基础之上的。读者可以根据自己的需求点，找到适合自己的方法，进行灵活整合，制订专属于自己的人生规划。",
-    "centPrice": 7680,
+    "payType": 1048577,
+    "intro": "本书是一本经典而实用的畅销Spring 学习指南。 第5 版涵盖了Spring 5.0 和Spring Boot 2.0 里程碑式的更新。全书分为5 个部分，共19 章。第1 部分（第1～5 章）涵盖了构建Spring 应用的基础话题。第2 部分（第6～9章）讨论如何将Spring 应用与其他应用进行集成。第3 部分（第10～12 章）探讨Spring对反应式编程提供的全新支持。第4 部分（第13～15 章）拆分单体应用模型，介绍SpringCloud 和微服务开发。第5 部分（第16～19 章）讨论如何为应用投入生产环境做准备以及如何进行部署。本书既适合刚开始学习Spring Boot 和Spring 框架的Java 开发人员快速上手，也适合经验丰富的Spring 开发人员学习Spring 的新特性，尤其适用于企业级Java 开发人员。",
+    "centPrice": 6336,
     "finished": 1,
-    "maxFreeChapter": 17,
+    "maxFreeChapter": 18,
     "free": 0,
     "mcardDiscount": 0,
     "ispub": 1,
     "extra_type": 5,
-    "cpid": 4525313,
-    "publishTime": "2018-12-01 00:00:00",
-    "category": "社会文化-社科",
+    "cpid": 5256588,
+    "publishTime": "2020-02-01 00:00:00",
+    "category": "计算机-编程设计",
     "categories": [
         {
-            "categoryId": 900000,
-            "subCategoryId": 900002,
+            "categoryId": 700000,
+            "subCategoryId": 700002,
             "categoryType": 0,
-            "title": "社会文化-社科"
+            "title": "计算机-编程设计"
         }
     ],
     "hasLecture": 0,
-    "lastChapterIdx": 143,
+    "lastChapterIdx": 127,
     "paperBook": {
-        "skuId": "12465509"
+        "skuId": "12622829"
     },
     "maxFreeInfo": {
-        "maxFreeChapterIdx": 17,
-        "maxFreeChapterUid": 159,
-        "maxFreeChapterRatio": 18
+        "maxFreeChapterIdx": 18,
+        "maxFreeChapterUid": 18,
+        "maxFreeChapterRatio": 61
     },
     "copyrightChapterUids": [
-        144
+        2
     ],
     "hasKeyPoint": true,
-    "blockSaveImg": 0,
+    "blockSaveImg": 1,
     "language": "zh",
     "hideUpdateTime": false,
     "isEPUBComics": 0,
     "webBookControl": 0,
-    "payingStatus": 1,
-    "chapterSize": 143,
-    "updateTime": 1701883501,
-    "onTime": 1548309864,
-    "lastChapterCreateTime": 1701882611,
-    "unitPrice": 0,
+    "payingStatus": 2,
+    "chapterSize": 127,
+    "updateTime": 1704407036,
+    "onTime": 1582887261,
+    "unitPrice": 0.05,
     "marketType": 0,
-    "isbn": "9787508693248",
-    "publisher": "中信出版集团",
-    "totalWords": 402461,
-    "bookSize": 1539873,
+    "isbn": "9787115527929",
+    "publisher": "人民邮电出版社",
+    "totalWords": 452282,
+    "publishPrice": 99.0,
+    "bookSize": 1212744,
     "shouldHideTTS": 0,
     "recommended": 0,
     "lectureRecommended": 0,
@@ -78,154 +78,154 @@
     "isChapterPaid": 0,
     "showLectureButton": 1,
     "wxtts": 1,
-    "star": 82,
-    "ratingCount": 1885,
+    "star": 75,
+    "ratingCount": 361,
     "ratingDetail": {
-        "one": 69,
-        "two": 27,
-        "three": 200,
-        "four": 292,
-        "five": 1279,
-        "recent": 16
+        "one": 19,
+        "two": 2,
+        "three": 33,
+        "four": 59,
+        "five": 247,
+        "recent": 0
     },
-    "newRating": 739,
-    "newRatingCount": 1632,
+    "newRating": 757,
+    "newRatingCount": 333,
     "newRatingDetail": {
-        "good": 1208,
-        "fair": 364,
-        "poor": 60,
-        "recent": 16,
+        "good": 252,
+        "fair": 67,
+        "poor": 14,
+        "recent": 0,
         "myRating": "",
-        "title": "值得一读"
+        "title": ""
     },
     "ranklist": {},
     "copyrightInfo": {
-        "id": 4525313,
-        "name": "中信出版集团",
-        "userVid": 168010251,
+        "id": 5256588,
+        "name": "人民邮电出版社",
+        "userVid": 545908360,
         "role": 2,
-        "avatar": "https://res.weread.qq.com/wravatar/WV0024-U1iMC6kMGhnrmZPNpypE~a6/0"
+        "avatar": "https://res.weread.qq.com/wravatar/WV0022-WtKx5gB3PLVALg5t~WNwid2/0"
     },
     "authorSeg": [
         {
-            "words": "蒂姆·费里斯",
+            "words": "克雷格·沃斯",
             "highlight": 1,
-            "authorId": "259087"
+            "authorId": "325248"
         }
     ],
     "translatorSeg": [
         {
-            "words": "杨清波",
+            "words": "张卫滨",
             "highlight": 1,
-            "authorId": "802699"
+            "authorId": "1639775"
         }
     ],
     "coverBoxInfo": {
-        "blurhash": "KHQ$c@n7.uXif7nRL;kTtz",
+        "blurhash": "K+L|}r00kDs:oJj?xuWBM_",
         "colors": [
             {
                 "key": "6/4",
-                "hex": "#b58a76"
+                "hex": "#9f9460"
             },
             {
                 "key": "4/4",
-                "hex": "#815644"
+                "hex": "#6b6030"
             },
             {
                 "key": "3/4",
-                "hex": "#663d2e"
+                "hex": "#51471d"
             },
             {
                 "key": "3/6",
-                "hex": "#703820"
+                "hex": "#544700"
             },
             {
                 "key": "3/8",
-                "hex": "#79320e"
+                "hex": "#564700"
             },
             {
                 "key": "2/4",
-                "hex": "#4c261c"
+                "hex": "#3a3103"
             },
             {
                 "key": "2/6",
-                "hex": "#552011"
+                "hex": "#3d3000"
             },
             {
                 "key": "2/8",
-                "hex": "#5f1700"
+                "hex": "#403000"
             },
             {
                 "key": "1/4",
-                "hex": "#380e0a"
+                "hex": "#261b00"
             },
             {
                 "key": "1/6",
-                "hex": "#3f0403"
+                "hex": "#2a1b00"
             },
             {
                 "key": "1/8",
-                "hex": "#480000"
+                "hex": "#2e1a00"
             },
             {
                 "key": "6/6",
-                "hex": "#c38566"
+                "hex": "#a39443"
             },
             {
                 "key": "4/6",
-                "hex": "#8c5136"
+                "hex": "#6e6013"
             },
             {
                 "key": "9/2",
-                "hex": "#f4dfd4"
+                "hex": "#eae4c3"
             },
             {
                 "key": "4/10",
-                "hex": "#9d460f"
+                "hex": "#726000"
             },
             {
                 "key": "5/10",
-                "hex": "#bc6029"
+                "hex": "#8d7900"
             },
             {
                 "key": "5/4",
-                "hex": "#9a705d"
+                "hex": "#857a47"
             },
             {
                 "key": "8/4",
-                "hex": "#ecbfa8"
+                "hex": "#d3c990"
             },
             {
                 "key": "5/8",
-                "hex": "#b3653c"
+                "hex": "#8c7a00"
             },
             {
                 "key": "6/8",
-                "hex": "#cf8056"
+                "hex": "#a69420"
             },
             {
                 "key": "8/6",
-                "hex": "#fbb997"
+                "hex": "#d8c975"
             },
             {
                 "key": "7/8",
-                "hex": "#eb9a6e"
+                "hex": "#c1ae3f"
             },
             {
                 "key": "3/12",
-                "hex": "#872400"
+                "hex": "#594700"
             },
             {
                 "key": "9/12",
-                "hex": "#ffc478"
+                "hex": "#fde518"
             },
             {
                 "key": "1/100",
-                "hex": "#cf8056"
+                "hex": "#a69420"
             },
             {
                 "key": "2/100",
-                "hex": "#eb9a6e"
+                "hex": "#c1ae3f"
             },
             {
                 "key": "3/100",
@@ -233,26 +233,26 @@
             },
             {
                 "key": "4/100",
-                "hex": "#F3EDE5"
+                "hex": "#F3F1E5"
             },
             {
                 "key": "5/100",
-                "hex": "#F3EDE5"
+                "hex": "#F3F1E5"
             },
             {
                 "key": "6/100",
-                "hex": "#271300"
+                "hex": "#271E00"
             }
         ],
         "dominate_color": {
-            "hex": "#e76e04",
+            "hex": "#443c1c",
             "hsv": [
-                28.01214376347435,
-                98.39003768666475,
-                90.443274924005
+                47.57595901816212,
+                58.900385311218216,
+                26.8023726332362
             ]
         },
-        "custom_cover": "https://weread-1258476243.file.myqcloud.com/bookalphacover/830/23934830/s_23934830.jpg",
-        "custom_rec_cover": "https://weread-1258476243.file.myqcloud.com/bookreccover/830/23934830/s_23934830.jpg"
+        "custom_cover": "https://weread-1258476243.file.myqcloud.com/bookalphacover/559/29101559/s_29101559.jpg",
+        "custom_rec_cover": "https://weread-1258476243.file.myqcloud.com/bookreccover/559/29101559/s_29101559.jpg"
     }
 }
