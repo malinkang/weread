@@ -14,10 +14,12 @@ from config import (
     book_properties_type_dict,
 )
 from bs4 import BeautifulSoup
+from retrying import retry
 TAG_ICON_URL = "https://www.notion.so/icons/tag_gray.svg"
 USER_ICON_URL = "https://www.notion.so/icons/user-circle-filled_gray.svg"
 BOOK_ICON_URL = "https://www.notion.so/icons/book_gray.svg"
 
+@retry(stop_max_attempt_number=3, wait_fixed=5000)
 def search_neodb(title, isbn):
     query = title if isbn == None or isbn.strip() == "" else isbn
     print(f"search_neodb {title} {isbn} ")
@@ -46,7 +48,7 @@ def search_neodb(title, isbn):
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 }
-
+@retry(stop_max_attempt_number=3, wait_fixed=5000)
 def get_douban_cover(url):
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content)
