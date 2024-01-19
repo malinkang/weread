@@ -105,6 +105,7 @@ def insert_book_to_notion(books, index, bookId):
     if douban_book:
         """获取的ISBN未必正确所以优先判断有ISBN没没有再从豆瓣拿"""
         isbn = book.get("isbn")
+        book["douban_url"]=douban_url
         if isbn or isbn.strip():
             book["isbn"] = douban_book.get("isbn")
         """微信读书的作者名有点恶心，从豆瓣取了"""
