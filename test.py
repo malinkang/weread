@@ -17,12 +17,9 @@ b = ""
 # else:
 #     print("false")
 
-
-a=1
-b=1
-
-if a is b:
-    print("true")
+douban_url = "haha"
+if not douban_url or not douban_url.strip():
+    print("Please")
 
 
 # c = None

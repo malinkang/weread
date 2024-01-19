@@ -28,9 +28,10 @@ def get_douban_url(title, isbn):
     直接曲线通过NeoDB来获取，But NeoDB有点数据不全
     不一定能搜索到，而且通过名字搜索出来的书可能不对
     """
-    query = title if isbn or isbn.strip() else isbn
+    query = isbn if isbn and isbn.strip() else title
     print(f"search_neodb {title} {isbn} ")
     params = {"query": query, "page": "1", "category": "book"}
+    print(query)
     r = requests.get("https://neodb.social/api/catalog/search", params=params)
     books = r.json().get("data")
     if books is None or len(books) == 0:
@@ -64,13 +65,19 @@ def douban_book_parse(link):
     result = {}
     result["title"] = soup.find(property="v:itemreviewed").string
     result["cover"] = soup.find(id="mainpic").img["src"]
-    authors  = soup.find_all("li",class_="author")
-    authors = [author.find("a", class_="name").string for author in authors if author.find("a", class_="name") is not None]
+    authors = soup.find_all("li", class_="author")
+    authors = [
+        author.find("a", class_="name").string
+        for author in authors
+        if author.find("a", class_="name") is not None
+    ]
     result["author"] = authors
     info = soup.find(id="info")
     info = list(map(lambda x: x.replace(":", "").strip(), info.stripped_strings))
-    result["isbn"] = info[info.index("ISBN") + 1 :][0]
+    if "ISBN" in info:
+        result["isbn"] = info[info.index("ISBN") + 1 :][0]
     return result
+
 
 def insert_book_to_notion(books, index, bookId):
     """插入Book到Notion"""
@@ -96,8 +103,8 @@ def insert_book_to_notion(books, index, bookId):
             book["cover"] = f"{cover}.jpg"
         book["author"] = ["公众号"]
     douban_url = book.get("douban_url")
-    #获取豆瓣链接
-    if author != "公众号" and (not douban_url or douban_url.strip()):
+    """不是公众号并且douban链接为None"""
+    if author != "公众号" and (not douban_url or not douban_url.strip()):
         douban_url = get_douban_url(book.get("title"), book.get("isbn"))
     douban_book = None
     if douban_url:
@@ -105,8 +112,8 @@ def insert_book_to_notion(books, index, bookId):
     if douban_book:
         """获取的ISBN未必正确所以优先判断有ISBN没没有再从豆瓣拿"""
         isbn = book.get("isbn")
-        book["douban_url"]=douban_url
-        if isbn or isbn.strip():
+        book["douban_url"] = douban_url
+        if not isbn or not isbn.strip():
             book["isbn"] = douban_book.get("isbn")
         """微信读书的作者名有点恶心，从豆瓣取了"""
         book["author"] = douban_book.get("author")
@@ -115,11 +122,11 @@ def insert_book_to_notion(books, index, bookId):
             book["cover"] = douban_book.get("cover")
         else:
             """替换为高清图"""
-            book["cover"] = book.get("cover").replace('/s_', '/t7_')
-    elif author != "公众号" :
+            book["cover"] = book.get("cover").replace("/s_", "/t7_")
+    elif author != "公众号":
         book["author"] = book.get("author").split(" ")
         """替换为高清图"""
-        book["cover"] = book.get("cover").replace('/s_', '/t7_');
+        book["cover"] = book.get("cover").replace("/s_", "/t7_")
     book["readingProgress"] = (
         100 if (book.get("markedStatus") == 4) else book.get("readingProgress", 0)
     ) / 100
