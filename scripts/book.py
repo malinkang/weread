@@ -33,9 +33,7 @@ def get_douban_url(title, isbn):
     params = {"query": query, "page": "1", "category": "book"}
     r = requests.get("https://neodb.social/api/catalog/search", params=params)
     books = r.json().get("data")
-    with open("json_results.json","w") as f:
-        f.write(json.dumps(books,indent=4,ensure_ascii=False))
-    if len(books) == 0:
+    if books is None or len(books) == 0:
         return None
     results = list(filter(lambda x: x.get("isbn") == query, books))
     if len(results) == 0:
