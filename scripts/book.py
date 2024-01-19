@@ -33,6 +33,8 @@ def get_douban_url(title, isbn):
     params = {"query": query, "page": "1", "category": "book"}
     r = requests.get("https://neodb.social/api/catalog/search", params=params)
     books = r.json().get("data")
+    with open("json_results.json","w") as f:
+        f.write(json.dumps(books,indent=4,ensure_ascii=False))
     if len(books) == 0:
         return None
     results = list(filter(lambda x: x.get("isbn") == query, books))
@@ -64,12 +66,11 @@ def douban_book_parse(link):
     result = {}
     result["title"] = soup.find(property="v:itemreviewed").string
     result["cover"] = soup.find(id="mainpic").img["src"]
-    info = soup.find(id="info")
     authors  = soup.find_all("li",class_="author")
-    authors = [author.find("a",class_="name").string for author in authors]
-    info = list(map(lambda x: x.replace(":", "").strip(), info.stripped_strings))
-    print(info)
+    authors = [author.find("a", class_="name").string for author in authors if author.find("a", class_="name") is not None]
     result["author"] = authors
+    info = soup.find(id="info")
+    info = list(map(lambda x: x.replace(":", "").strip(), info.stripped_strings))
     result["isbn"] = info[info.index("ISBN") + 1 :][0]
     return result
 

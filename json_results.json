@@ -1,0 +1,43 @@
+[
+    {
+        "id": "https://neodb.social/book/0DtDdWwF7ql6WgjNB1e2ut",
+        "type": "Edition",
+        "uuid": "0DtDdWwF7ql6WgjNB1e2ut",
+        "url": "/book/0DtDdWwF7ql6WgjNB1e2ut",
+        "api_url": "/api/book/0DtDdWwF7ql6WgjNB1e2ut",
+        "category": "book",
+        "parent_uuid": null,
+        "display_title": "禅与摩托车维修艺术",
+        "external_resources": [
+            {
+                "url": "https://book.douban.com/subject/6811366/"
+            },
+            {
+                "url": "https://www.goodreads.com/book/show/29489570"
+            }
+        ],
+        "title": "禅与摩托车维修艺术",
+        "brief": "在一个炎热的夏天，父子两人和约翰夫妇骑摩托车从明尼苏达到加州，跨越美国大陆，旅行的过程与一个青年斐德洛研修科学技术与西方经典，寻求自我的解脱，以及探寻生命的意义的过程相互穿插。一路上父亲以一场哲学肖陶扩的形式，将见到的自然景色，野外露营的经历，夜晚旅店的谈话，机车修护技术等等日常生活与西方从苏格拉底以来的理性哲学的深入浅出的阐述与评论相结合，进行了对形而上学传统的主客体二元论的反思，以及对科学与艺术，知识与价值，古典主义与浪漫主义，精神与物质，机械论与神秘主义，西方与东方等西方二分法划分下的事物间的关系的思考。并潜入自己的过去，探寻在现代文明下自己精神的分裂的起源，完成了一次自我心灵与人类文明的探索。",
+        "cover_image_url": "https://neodb.social/m/book/2021/09/159d35aa6f-1bfa-4730-acb4-54a0bca8756d.jpg",
+        "rating": 8.1,
+        "rating_count": 137,
+        "subtitle": "",
+        "orig_title": "Zen and the Art of Motorcycle Maintenance",
+        "author": [
+            "[美]罗伯特·M.波西格"
+        ],
+        "translator": [
+            "张国辰"
+        ],
+        "language": "Chinese",
+        "pub_house": "重庆出版社",
+        "pub_year": 2011,
+        "pub_month": 9,
+        "binding": "精装",
+        "price": "36.00元",
+        "pages": 377,
+        "series": "重现经典（精装）",
+        "imprint": "华章同人",
+        "isbn": "9787229040369"
+    }
+]
