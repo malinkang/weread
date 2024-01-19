@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/26/YueWen_603120/s_YueWen_603120.jpg)
+![](https://cdn.weread.qq.com/weread/cover/26/YueWen_603120/t7_YueWen_603120.jpg)
 
 
 ## 第一部分 走近Java

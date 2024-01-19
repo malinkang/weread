@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/14/YueWen_27371406/s_YueWen_27371406.jpg)
+![](https://cdn.weread.qq.com/weread/cover/14/YueWen_27371406/t7_YueWen_27371406.jpg)
 
 
 #### 2.3 HotSpot虚拟机对象探秘

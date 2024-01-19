@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://wfqqreader-1252317822.image.myqcloud.com/cover/559/29101559/s_29101559.jpg)
+![](https://wfqqreader-1252317822.image.myqcloud.com/cover/559/29101559/t7_29101559.jpg)
 
 
 #### 1.1 什么是Spring

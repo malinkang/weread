@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://wfqqreader-1252317822.image.myqcloud.com/cover/61/23735061/s_23735061.jpg)
+![](https://wfqqreader-1252317822.image.myqcloud.com/cover/61/23735061/t7_23735061.jpg)
 
 
 ### 3.4 View的事件分发机制

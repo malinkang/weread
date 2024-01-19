@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/90/YueWen_34336681/s_YueWen_34336681.jpg)
+![](https://cdn.weread.qq.com/weread/cover/90/YueWen_34336681/t7_YueWen_34336681.jpg)
 
 
 ### 第 9 章 类

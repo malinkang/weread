@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/3/YueWen_681633/s_YueWen_681633.jpg)
+![](https://cdn.weread.qq.com/weread/cover/3/YueWen_681633/t7_YueWen_681633.jpg)
 
 
 ## 第10章 Executor框架

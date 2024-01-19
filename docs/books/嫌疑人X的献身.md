@@ -4,7 +4,7 @@ tags:
   - 精品小说-悬疑推理
 ---
 
-![](https://wfqqreader-1252317822.image.myqcloud.com/cover/110/230110/s_230110.jpg)
+![](https://wfqqreader-1252317822.image.myqcloud.com/cover/110/230110/t7_230110.jpg)
 
 
 ## 第一章

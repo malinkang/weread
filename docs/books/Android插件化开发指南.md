@@ -4,7 +4,7 @@ tags:
   - 计算机-计算机综合
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/46/YueWen_22917911/s_YueWen_22917911.jpg)
+![](https://cdn.weread.qq.com/weread/cover/46/YueWen_22917911/t7_YueWen_22917911.jpg)
 
 
 ### 致谢

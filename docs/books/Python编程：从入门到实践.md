@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/8/YueWen_22806930/s_YueWen_22806930.jpg)
+![](https://cdn.weread.qq.com/weread/cover/8/YueWen_22806930/t7_YueWen_22806930.jpg)
 
 
 ### 第2章 变量和简单数据类型

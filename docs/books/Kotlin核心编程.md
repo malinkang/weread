@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/0/YueWen_25315239/s_YueWen_25315239.jpg)
+![](https://cdn.weread.qq.com/weread/cover/0/YueWen_25315239/t7_YueWen_25315239.jpg)
 
 
 ## 热身篇 Kotlin基础

@@ -4,7 +4,7 @@ tags:
   - 计算机-计算机综合
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/82/YueWen_807885/s_YueWen_807885.jpg)
+![](https://cdn.weread.qq.com/weread/cover/82/YueWen_807885/t7_YueWen_807885.jpg)
 
 
 ### 加班到底在加什么

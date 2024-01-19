@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/17/YueWen_32083933/s_YueWen_32083933.jpg)
+![](https://cdn.weread.qq.com/weread/cover/17/YueWen_32083933/t7_YueWen_32083933.jpg)
 
 
 #### 1.2.1 结果传递

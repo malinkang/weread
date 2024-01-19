@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/11/YueWen_27651657/s_YueWen_27651657.jpg)
+![](https://cdn.weread.qq.com/weread/cover/11/YueWen_27651657/t7_YueWen_27651657.jpg)
 
 
 #### 6.5 代理

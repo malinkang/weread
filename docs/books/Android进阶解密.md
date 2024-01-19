@@ -4,7 +4,7 @@ tags:
   - 计算机-编程设计
 ---
 
-![](https://cdn.weread.qq.com/weread/cover/72/YueWen_31186331/s_YueWen_31186331.jpg)
+![](https://cdn.weread.qq.com/weread/cover/72/YueWen_31186331/t7_YueWen_31186331.jpg)
 
 
 ### 15.2 插件化的产生

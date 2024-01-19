@@ -4,7 +4,7 @@ tags:
   - 计算机-计算机综合
 ---
 
-![](https://wfqqreader-1252317822.image.myqcloud.com/cover/451/920451/s_920451.jpg)
+![](https://wfqqreader-1252317822.image.myqcloud.com/cover/451/920451/t7_920451.jpg)
 
 
 ### 第6章 resource.arsc文件格式解析

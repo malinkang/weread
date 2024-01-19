@@ -4,7 +4,7 @@ tags:
   - 教育学习-教材
 ---
 
-![](https://wfqqreader-1252317822.image.myqcloud.com/cover/927/32517927/s_32517927.jpg)
+![](https://wfqqreader-1252317822.image.myqcloud.com/cover/927/32517927/t7_32517927.jpg)
 
 
 !!! note "笔记"
