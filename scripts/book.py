@@ -113,8 +113,13 @@ def insert_book_to_notion(books, index, bookId):
         """自己传的书获取的封面Notion不能展示用douban的封面吧"""
         if cover.startswith("http") and not cover.endswith(".jpg"):
             book["cover"] = douban_book.get("cover")
-    else:
+        else:
+            """替换为高清图"""
+            book["cover"] = book.get("cover").replace('/s_', '/t7_')
+    elif author != "公众号" :
         book["author"] = book.get("author").split(" ")
+        """替换为高清图"""
+        book["cover"] = book.get("cover").replace('/s_', '/t7_');
     book["readingProgress"] = (
         100 if (book.get("markedStatus") == 4) else book.get("readingProgress", 0)
     ) / 100
