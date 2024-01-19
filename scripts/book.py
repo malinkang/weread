@@ -15,13 +15,20 @@ from config import (
 )
 from bs4 import BeautifulSoup
 from retrying import retry
+
 TAG_ICON_URL = "https://www.notion.so/icons/tag_gray.svg"
 USER_ICON_URL = "https://www.notion.so/icons/user-circle-filled_gray.svg"
 BOOK_ICON_URL = "https://www.notion.so/icons/book_gray.svg"
 
+
 @retry(stop_max_attempt_number=3, wait_fixed=5000)
-def search_neodb(title, isbn):
-    query = title if isbn == None or isbn.strip() == "" else isbn
+def get_douban_url(title, isbn):
+    """
+    不知道怎么直接根据isbn获取douban的链接
+    直接曲线通过NeoDB来获取，But NeoDB有点数据不全
+    不一定能搜索到，而且通过名字搜索出来的书可能不对
+    """
+    query = title if isbn or isbn.strip() else isbn
     print(f"search_neodb {title} {isbn} ")
     params = {"query": query, "page": "1", "category": "book"}
     r = requests.get("https://neodb.social/api/catalog/search", params=params)
@@ -34,32 +41,45 @@ def search_neodb(title, isbn):
     if len(results) == 0:
         return None
     result = results[0]
-    douban_url = list(
+    urls = list(
         filter(
             lambda x: x.get("url").startswith("https://book.douban.com"),
             result.get("external_resources", []),
         )
     )
-    return {
-        "neodb_url": result.get("id"),
-        "douban_url": None if (len(douban_url) == 0) else douban_url[0].get("url"),
-        "author": result.get("author", []),
-    }
+    if len(urls) == 0:
+        return None
+    return urls[0].get("url")
+
+
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 }
+
+
 @retry(stop_max_attempt_number=3, wait_fixed=5000)
-def get_douban_cover(url):
-    response = requests.get(url, headers=headers)
+def douban_book_parse(link):
+    response = requests.get(link, headers=headers)
     soup = BeautifulSoup(response.content)
-    cover =  soup.find(id="mainpic").img["src"]
-    return cover
+    result = {}
+    result["title"] = soup.find(property="v:itemreviewed").string
+    result["cover"] = soup.find(id="mainpic").img["src"]
+    info = soup.find(id="info")
+    authors  = soup.find_all("li",class_="author")
+    authors = [author.find("a",class_="name").string for author in authors]
+    info = list(map(lambda x: x.replace(":", "").strip(), info.stripped_strings))
+    print(info)
+    result["author"] = authors
+    result["isbn"] = info[info.index("ISBN") + 1 :][0]
+    return result
 
 def insert_book_to_notion(books, index, bookId):
     """插入Book到Notion"""
     book = {}
     if bookId in archive_dict:
         book["archive"] = archive_dict.get(bookId)
+    if bookId in notion_books:
+        book.update(notion_books.get(bookId))
     bookInfo = weread_api.get_bookinfo(bookId)
     if bookInfo != None:
         book.update(bookInfo)
@@ -68,24 +88,33 @@ def insert_book_to_notion(books, index, bookId):
     readInfo.update(readInfo.get("readDetail", {}))
     readInfo.update(readInfo.get("bookInfo", {}))
     book.update(readInfo)
-    if(book.get("author")=="公众号"):
-        if not book.get("cover").startswith("http"):
-           book["cover"] = BOOK_ICON_URL
-        if book.get("cover").startswith("http") and not book.get("cover").endswith(".jpg"):
-           book["cover"] = f"{book.get('cover')}.jpg"
+    cover = book.get("cover")
+    author = book.get("author")
+    if author == "公众号":
+        if not cover.startswith("http"):
+            book["cover"] = BOOK_ICON_URL
+        if cover.startswith("http") and not cover.endswith(".jpg"):
+            book["cover"] = f"{cover}.jpg"
         book["author"] = ["公众号"]
+    douban_url = book.get("douban_url")
+    #获取豆瓣链接
+    if author != "公众号" and (not douban_url or douban_url.strip()):
+        douban_url = get_douban_url(book.get("title"), book.get("isbn"))
+    douban_book = None
+    if douban_url:
+        douban_book = douban_book_parse(douban_url)
+    if douban_book:
+        """获取的ISBN未必正确所以优先判断有ISBN没没有再从豆瓣拿"""
+        isbn = book.get("isbn")
+        if isbn or isbn.strip():
+            book["isbn"] = douban_book.get("isbn")
+        """微信读书的作者名有点恶心，从豆瓣取了"""
+        book["author"] = douban_book.get("author")
+        """自己传的书获取的封面Notion不能展示用douban的封面吧"""
+        if cover.startswith("http") and not cover.endswith(".jpg"):
+            book["cover"] = douban_book.get("cover")
     else:
-        neodb_book = search_neodb(book.get("title"),book.get("isbn"))
-        if neodb_book:
-            book.update(neodb_book)
-            if not book.get("cover").endswith(".jpg"):
-                book["cover"] = get_douban_cover(book.get("douban_url"))
-            else:
-                book["cover"] = book.get("cover").replace('/s_', '/t7_')
-        else:
-             book["cover"] = book.get("cover").replace('/s_', '/t7_')
-             book["author"] = book.get("author").split(" ")
-    # 时间优先取完成阅读的时间
+        book["author"] = book.get("author").split(" ")
     book["readingProgress"] = (
         100 if (book.get("markedStatus") == 4) else book.get("readingProgress", 0)
     ) / 100

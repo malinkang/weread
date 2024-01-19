@@ -98,8 +98,9 @@ class NotionHelper:
             update_properties["书架分类"] = {"select": {}}
         if properties.get("豆瓣链接") is None or properties.get("豆瓣链接").get("type") != "url":
             update_properties["豆瓣链接"] = {"url": {}}
-        if properties.get("NeoDB链接") is None or properties.get("NeoDB链接").get("type") != "url":
-            update_properties["NeoDB链接"] = {"url": {}}
+        """NeoDB先不添加了，现在受众还不光，可能有的小伙伴不知道是干什么的"""
+        # if properties.get("NeoDB链接") is None or properties.get("NeoDB链接").get("type") != "url":
+        #     update_properties["NeoDB链接"] = {"url": {}}
         if len(update_properties) > 0:
             self.client.databases.update(
                 database_id=id, properties=update_properties
@@ -302,6 +303,7 @@ class NotionHelper:
                 "readingTime": get_property_value(result.get("properties").get("阅读时长")) ,
                 "category": get_property_value(result.get("properties").get("书架分类")) ,
                 "Sort": get_property_value(result.get("properties").get("Sort")) ,
+                "douban_url": get_property_value(result.get("properties").get("豆瓣链接")) ,
             }
         return books_dict
 
