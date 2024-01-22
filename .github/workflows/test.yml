@@ -39,7 +39,7 @@ jobs:
         if: steps.check-backup.outputs.exists == 'true'
         uses: actions/checkout@v2
         with:
-          ref: backup
+          ref: backup2
           path: backup
       - name: weread heatmap
         run: |
@@ -61,5 +61,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add assets/heatmap
           git commit -m "Backup images" -m "Committing images to backup branch" || echo "No changes to commit"
-          git branch -M backup
-          git push -u origin backup
+          git branch -M backup2
+          git push -u origin backup2
