@@ -26,23 +26,12 @@ jobs:
       - name: Set default year if not provided
         run: echo "YEAR=$(date +"%Y")" >> $GITHUB_ENV
         if: env.YEAR == ''
-      - name: Check if backup branch exists
-        id: check-backup
-        run: |
-          echo "Checking for backup branch..."
-          if git ls-remote --heads origin test; then
-            echo "存在"
-            echo "::set-output name=exists::true"
-          else
-            echo "不存在"
-            echo "::set-output name=exists::false"
-          fi
       - name: Checkout backup branch into backup directory
-        if: steps.check-backup.outputs.exists == 'true'
         uses: actions/checkout@v2
         with:
           ref: backup2
           path: backup
+        continue-on-error: true # 如果分支不存在，不要失败
       - name: weread heatmap
         run: |
           github_heatmap weread  --weread_cookie "${{secrets.WEREAD_COOKIE}}" --year $YEAR  --me "${{secrets.NAME}}" --with-animation --background-color=${{ vars.background_color||'#FFFFFF'}} --track-color=${{ vars.track_color||'#ACE7AE'}} --special-color1=${{ vars.special_color||'#69C16E'}} --special-color2=${{ vars.special_color2||'#549F57'}} --dom-color=${{ vars.dom_color||'#EBEDF0'}} --text-color=${{ vars.text_color||'#000000'}}
@@ -57,10 +46,9 @@ jobs:
           mkdir -p backup/assets/heatmap/
           cp -r OUT_FOLDER/* backup/assets/heatmap/
       - name: Commit and push to backup branch
-        run: |
-          cd backup
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add assets/heatmap
-          git commit -m "Backup images" -m "Committing images to backup branch" || echo "No changes to commit"
-          git push -u origin test
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "backup/assets/heatmap"
+          author_name: GitHub Action
+          author_email: action@github.com
+          new_branch: backup2
