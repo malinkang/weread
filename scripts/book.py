@@ -29,7 +29,6 @@ def get_douban_url(title, isbn):
     不一定能搜索到，而且通过名字搜索出来的书可能不对
     """
     query = isbn if isbn and isbn.strip() else title
-    print(f"search_neodb {title} {isbn} ")
     params = {"query": query, "page": "1", "category": "book"}
     print(query)
     r = requests.get("https://neodb.social/api/catalog/search", params=params)
