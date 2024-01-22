@@ -15,7 +15,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
-
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+         python -m pip install --upgrade pip
+         pip install -r requirements.txt
+      - name: Set default year if not provided
+        run: echo "YEAR=$(date +"%Y")" >> $GITHUB_ENV
+        if: env.YEAR == ''
       - name: Check if backup branch exists
         id: check-backup
         run: |
