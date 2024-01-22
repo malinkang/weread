@@ -30,7 +30,7 @@ jobs:
         id: check-backup
         run: |
           echo "Checking for backup branch..."
-          if git ls-remote --heads origin backup2; then
+          if git ls-remote --heads origin test; then
             echo "存在"
             echo "::set-output name=exists::true"
           else
@@ -63,5 +63,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add assets/heatmap
           git commit -m "Backup images" -m "Committing images to backup branch" || echo "No changes to commit"
-          git branch -M backup2
-          git push -u origin backup2
+          git push -u origin test
