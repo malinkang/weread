@@ -31,8 +31,10 @@ jobs:
         run: |
           echo "Checking for backup branch..."
           if git ls-remote --heads origin backup2; then
+            echo "存在"
             echo "::set-output name=exists::true"
           else
+            echo "不存在"
             echo "::set-output name=exists::false"
           fi
       - name: Checkout backup branch into backup directory
