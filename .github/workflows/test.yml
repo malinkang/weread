@@ -29,7 +29,7 @@ jobs:
       - name: push
         uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
-            add: 'backup/docs/books'
+            add: './backup/docs/books'
             author_name: GitHub Action
             author_email: action@github.com
             new_branch: backup2
