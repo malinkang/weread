@@ -135,7 +135,7 @@ async function getAllPagesFromDatabase(databaseId, startCursor = null) {
       // 使用 pageToMarkdown 转换页面
       const mdblocks = await n2m.pageToMarkdown(page.id);
       const mdString = n2m.toMarkdownString(mdblocks).parent;
-      consolZVBBVVJH666554                                            6/e.log(`mdString = ${mdString}`)
+      console.log(`mdString = ${mdString}`)
       if(mdString === undefined) {
         continue;
       }
